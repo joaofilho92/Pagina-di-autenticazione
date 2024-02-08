@@ -10,5 +10,24 @@ object Form1: TForm1
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Menu = MainMenu1
   TextHeight = 15
+  object Label1: TLabel
+    Left = 208
+    Top = 96
+    Width = 34
+    Height = 15
+    Caption = 'Label1'
+  end
+  object MainMenu1: TMainMenu
+    Left = 16
+    Top = 368
+    object Home1: TMenuItem
+      Caption = 'Home'
+      object Exit1: TMenuItem
+        Caption = 'Esci'
+        OnClick = Exit1Click
+      end
+    end
+  end
 end

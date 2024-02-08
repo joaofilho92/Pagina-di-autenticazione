@@ -49,6 +49,8 @@ if (Username = 'kd') and (Password = 'kd') then
 begin
    Result := True;
    ShowMessage('ok');
+   Form2.hide;
+   Form1.ShowModal;
 end
 else
 begin
