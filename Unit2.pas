@@ -18,13 +18,14 @@ type
     btn_register: TButton;
     Label3: TLabel;
     Panel2: TPanel;
-    Button2: TButton;
     Label4: TLabel;
     Image1: TImage;
     Label5: TLabel;
+    Button3: TButton;
     procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure btn_registerClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure E_passwordKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -57,9 +58,18 @@ begin
   Acesso := Login(Username, Password);
 end;
 
-procedure TF_Login.Button2Click(Sender: TObject);
+
+procedure TF_Login.Button3Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TF_Login.E_passwordKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    begin
+      Button1.Click;
+    end;
 end;
 
 function TF_Login.Login(Username, Password : String): Boolean;
@@ -68,14 +78,14 @@ begin
 if (Username = 'kd') and (Password = 'kd') then
 begin
    Result := True;
-   ShowMessage('ok');
+   ShowMessage('Acesso Consentito');
    F_Login.hide;
    F_Principale.ShowModal;
 end
 else
 begin
    Result := False;
-   ShowMessage('Denied');
+   ShowMessage('Accesso non consentito!');
   end;
 end;
 end.

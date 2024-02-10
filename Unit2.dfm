@@ -49,7 +49,7 @@ object F_Login: TF_Login
     end
     object Label3: TLabel
       Left = 328
-      Top = 339
+      Top = 315
       Width = 110
       Height = 15
       Caption = 'Non hai un account?'
@@ -86,6 +86,7 @@ object F_Login: TF_Login
       Width = 201
       Height = 23
       TabOrder = 1
+      OnKeyPress = E_passwordKeyPress
     end
     object Button1: TButton
       Left = 280
@@ -98,7 +99,7 @@ object F_Login: TF_Login
     end
     object btn_register: TButton
       Left = 280
-      Top = 360
+      Top = 336
       Width = 201
       Height = 25
       Caption = 'Registrati'
@@ -544,14 +545,14 @@ object F_Login: TF_Login
         ExplicitHeight = 37
       end
     end
-    object Button2: TButton
-      Left = 496
-      Top = 2
-      Width = 21
-      Height = 17
-      Caption = 'X'
+    object Button3: TButton
+      Left = 280
+      Top = 367
+      Width = 201
+      Height = 25
+      Caption = 'Esci'
       TabOrder = 5
-      OnClick = Button2Click
+      OnClick = Button3Click
     end
   end
 end
