@@ -12,6 +12,7 @@ type
     Home1: TMenuItem;
     Exit1: TMenuItem;
     Label1: TLabel;
+    Registro1: TMenuItem;
     procedure Exit1Click(Sender: TObject);
   private
     { Private declarations }

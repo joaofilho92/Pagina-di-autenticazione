@@ -20,10 +20,13 @@ object Form1: TForm1
     Caption = 'Label1'
   end
   object MainMenu1: TMainMenu
-    Left = 16
-    Top = 368
+    Left = 320
+    Top = 224
     object Home1: TMenuItem
       Caption = 'Home'
+      object Registro1: TMenuItem
+        Caption = 'Registro'
+      end
       object Exit1: TMenuItem
         Caption = 'Esci'
         OnClick = Exit1Click
