@@ -101,11 +101,15 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Unit1.pas">
-            <Form>Form1</Form>
+            <Form>F_Principale</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Unit2.pas">
-            <Form>Form2</Form>
+            <Form>F_Login</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Unit3.pas">
+            <Form>F_Registrati</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

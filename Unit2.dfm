@@ -1,9 +1,9 @@
-object Form2: TForm2
+object F_Login: TF_Login
   Left = 0
   Top = 0
   BorderIcons = []
   BorderStyle = bsNone
-  Caption = 'Form2'
+  Caption = 'Login Form'
   ClientHeight = 423
   ClientWidth = 525
   Color = clBtnFace
@@ -103,6 +103,7 @@ object Form2: TForm2
       Height = 25
       Caption = 'Registrati'
       TabOrder = 3
+      OnClick = btn_registerClick
     end
     object Panel2: TPanel
       Left = 1
@@ -545,7 +546,7 @@ object Form2: TForm2
     end
     object Button2: TButton
       Left = 496
-      Top = 8
+      Top = 2
       Width = 21
       Height = 17
       Caption = 'X'

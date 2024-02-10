@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.StdCtrls;
 
 type
-  TForm1 = class(TForm)
+  TF_Principale = class(TForm)
     MainMenu1: TMainMenu;
     Home1: TMenuItem;
     Exit1: TMenuItem;
@@ -21,13 +21,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  F_Principale: TF_Principale;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.Exit1Click(Sender: TObject);
+procedure TF_Principale.Exit1Click(Sender: TObject);
 begin
   Close;
 end;

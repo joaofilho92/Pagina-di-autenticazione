@@ -5,10 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Unit1,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, Unit3;
 
 type
-  TForm2 = class(TForm)
+  TF_Login = class(TForm)
     Panel1: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -24,6 +24,7 @@ type
     Label5: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure btn_registerClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,13 +33,18 @@ type
   end;
 
 var
-  Form2: TForm2;
+  F_Login: TF_Login;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm2.Button1Click(Sender: TObject);
+procedure TF_Login.btn_registerClick(Sender: TObject);
+begin
+  F_Registrati.ShowModal;
+end;
+
+procedure TF_Login.Button1Click(Sender: TObject);
 var
   Acesso : Boolean;
   Username : String;
@@ -51,20 +57,20 @@ begin
   Acesso := Login(Username, Password);
 end;
 
-procedure TForm2.Button2Click(Sender: TObject);
+procedure TF_Login.Button2Click(Sender: TObject);
 begin
   Close;
 end;
 
-function TForm2.Login(Username, Password : String): Boolean;
+function TF_Login.Login(Username, Password : String): Boolean;
 begin
 
 if (Username = 'kd') and (Password = 'kd') then
 begin
    Result := True;
    ShowMessage('ok');
-   Form2.hide;
-   Form1.ShowModal;
+   F_Login.hide;
+   F_Principale.ShowModal;
 end
 else
 begin
