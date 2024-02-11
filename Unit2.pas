@@ -46,7 +46,15 @@ end;
 
 procedure TF_Login.Button1Click(Sender: TObject);
 begin
-  Dm_1.Login(E_username.Text,E_password.Text);
+  if Dm_1.Login(E_username.Text,E_password.Text) then
+  begin
+      ShowMessage('Benvenuto');
+      F_Login.hide;
+      F_Principale.ShowModal;
+  end else
+  begin
+     ShowMessage('Accesso non consentito, controlla login e password e riprova');
+  end
 end;
 
 procedure TF_Login.Button3Click(Sender: TObject);

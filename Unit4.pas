@@ -32,33 +32,29 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses Unit2, Unit1;
+
 {$R *.dfm}
 
 { TDm_1 }
 
-function TDm_1.Login(UserName, password: string): boolean;
+function TDm_1.Login(UserName, Password: string): boolean;
 begin
-var
-  Q: TFDQuery;
+  var
+    Q: TFDQuery;
 begin
-
   Q := TFDQuery.Create(Self);
   try
     Q.Connection := FDConnection1;
-    Q.Open('select id,PASSWORD from Login and LOGIN=?',[UserName]);
+    Q.SQL.Text := 'SELECT LOGIN, PASSWORD FROM Login WHERE LOGIN = :Login AND PASSWORD = :Password';
+    Q.ParamByName('Login').AsString := UserName;
+    Q.ParamByName('Password').AsString := Password;
+    Q.Open;
 
-    if Q.RecordCount = 1 then
+    if not Q.IsEmpty then
     begin
-      //if password = Q.FieldByName('PWD').AsString then
-      if password.Equals(Q.FieldByName('PASSWORD').AsString) then
-      begin
-        FidUtente := Q.FieldByName('id').AsInteger;
-        FUserName := UserName;
-
-        Result := true;
-      end
-      else
-        Result := false;
+      Result := true;
+     
     end
     else
       Result := false;
