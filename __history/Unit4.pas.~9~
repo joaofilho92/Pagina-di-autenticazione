@@ -54,6 +54,7 @@ begin
     if not Q.IsEmpty then
     begin
       Result := true;
+     
     end
     else
       Result := false;
