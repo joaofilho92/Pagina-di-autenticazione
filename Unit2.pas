@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Unit1,
-  Vcl.Imaging.pngimage, Unit3;
+  Vcl.Imaging.pngimage, Unit3, Unit4;
 
 type
   TF_Login = class(TForm)
@@ -30,7 +30,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-    function Login(Username, Password : String) : Boolean;
   end;
 
 var
@@ -46,18 +45,9 @@ begin
 end;
 
 procedure TF_Login.Button1Click(Sender: TObject);
-var
-  Acesso : Boolean;
-  Username : String;
-  Password : String;
-
 begin
-  Username := E_username.Text;
-  Password := E_password.Text;
-
-  Acesso := Login(Username, Password);
+  Dm_1.Login(E_username.Text,E_password.Text);
 end;
-
 
 procedure TF_Login.Button3Click(Sender: TObject);
 begin
@@ -72,20 +62,5 @@ begin
     end;
 end;
 
-function TF_Login.Login(Username, Password : String): Boolean;
-begin
 
-if (Username = 'kd') and (Password = 'kd') then
-begin
-   Result := True;
-   ShowMessage('Acesso Consentito');
-   F_Login.hide;
-   F_Principale.ShowModal;
-end
-else
-begin
-   Result := False;
-   ShowMessage('Accesso non consentito!');
-  end;
-end;
 end.

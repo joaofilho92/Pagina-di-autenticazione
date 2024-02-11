@@ -1,0 +1,72 @@
+unit Unit4;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.SQLite,
+  FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs,
+  FireDAC.Phys.SQLiteWrapper.Stat, FireDAC.VCLUI.Wait, Data.DB,
+  FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet;
+
+type
+  TDm_1 = class(TDataModule)
+    FDConnection1: TFDConnection;
+  private
+    FidUtente: Integer;
+    FUserName: String;
+    { Private declarations }
+  public
+    { Public declarations }
+    property IdUtente: Integer read FidUtente write FidUtente;
+    property UserName: String read FUserName write FUserName;
+    function Login(UserName: string; password: string): boolean;
+  end;
+
+var
+  Dm_1: TDm_1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+{ TDm_1 }
+
+function TDm_1.Login(UserName, password: string): boolean;
+begin
+var
+  Q: TFDQuery;
+begin
+
+  Q := TFDQuery.Create(Self);
+  try
+    Q.Connection := FDConnection1;
+    Q.Open('select ID_OPERATORE,PWD from NOMIN where ATTIVO=''S'' and USR=?',[UserName]);
+
+    if Q.RecordCount = 1 then
+    begin
+      //if password = Q.FieldByName('PWD').AsString then
+      if password.Equals(Q.FieldByName('PWD').AsString) then
+      begin
+        FidUtente := Q.FieldByName('ID_OPERATORE').AsInteger;
+        FUserName := UserName;
+
+        Result := true;
+
+        Q.ExecSQL('update NOMIN set ULT_ACCESS=GETDATE() where ID_OPERATORE=?',[IdUtente]);
+      end
+      else
+        Result := false;
+    end
+    else
+      Result := false;
+  finally
+    Q.Free;
+  end;
+end;
+end;
+end.
