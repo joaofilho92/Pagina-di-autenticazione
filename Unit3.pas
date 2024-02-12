@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls,Unit4,FireDAC.Comp.Client;
 
 type
   TF_Registrati = class(TForm)
@@ -41,8 +41,10 @@ type
     Button1: TButton;
     Button2: TButton;
     procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
+    procedure salvaParametri;
   public
     { Public declarations }
   end;
@@ -53,6 +55,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TF_Registrati.Button1Click(Sender: TObject);
+begin
+  salvaParametri;
+end;
 
 procedure TF_Registrati.Button2Click(Sender: TObject);
 begin
@@ -71,5 +78,37 @@ begin
   D_DataDiNascita.Date := date;
 end;
 
+
+procedure TF_Registrati.salvaParametri;
+begin
+  var
+    Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(Self);
+  try
+   Q.Connection := Dm_1.FDConnection1;
+   Q.SQL.Text := 'INSERT INTO Login (NOME, COGNOME, CODICE_FISCALE, SESSO, STATO_CIVILE, INDIRIZZO_RESIDENZA, CIVICO, COMUNE_RESIDENZA, EMAIL, LOGIN, PASSWORD, DATA_DI_NASCITA) ' +
+              'VALUES (:Nome, :Cognome, :CodiceFiscale, :Sesso, :StatoCivile, :IndirizzoResidenza, :Civico, :Comune, :Email, :Login, :Password, :DataNascita)';
+    Q.ParamByName('Nome').AsString := E_Nome.Text;
+    Q.ParamByName('Cognome').AsString := E_Cognome.Text;
+    Q.ParamByName('CodiceFiscale').AsString := E_Codice_Fiscale.Text;
+    Q.ParamByName('Sesso').AsString := Cb_Sesso.Text;
+    Q.ParamByName('StatoCivile').AsString := Cb_StatoCivile.Text;
+    Q.ParamByName('IndirizzoResidenza').AsString := E_Indirizzo_di_Residenza.Text;
+    Q.ParamByName('Comune').AsString := E_Comune.Text;
+    Q.ParamByName('DataNascita').AsDate := D_DataDiNascita.Date;
+    Q.ParamByName('Civico').AsString := E_Civico.Text;
+    Q.ParamByName('Email').AsString := E_Email.Text;
+    Q.ParamByName('Login').AsString := E_Login.Text;
+    Q.ParamByName('Password').AsString := E_Password.Text;
+
+    Q.ExecSQL;
+    ShowMessage('Dados inseridos com sucesso.');
+    F_Registrati.Hide;
+  finally
+    Q.Free;
+  end;
+end;
+end;
 
 end.

@@ -12,16 +12,17 @@ object F_Principale: TF_Principale
   Font.Style = []
   Menu = MainMenu1
   TextHeight = 15
-  object Label1: TLabel
-    Left = 208
-    Top = 96
-    Width = 34
-    Height = 15
-    Caption = 'Label1'
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 129
+    Height = 442
+    Align = alLeft
+    TabOrder = 0
   end
   object MainMenu1: TMainMenu
-    Left = 320
-    Top = 224
+    Left = 552
+    Top = 40
     object Home1: TMenuItem
       Caption = 'Home'
       object Registro1: TMenuItem

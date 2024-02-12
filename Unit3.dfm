@@ -19,10 +19,6 @@ object F_Registrati: TF_Registrati
     Height = 520
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 216
-    ExplicitTop = 8
-    ExplicitWidth = 480
-    ExplicitHeight = 441
     object Label3: TLabel
       Left = 17
       Top = 159
@@ -200,7 +196,6 @@ object F_Registrati: TF_Registrati
       Color = clBlack
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 622
       object Label1: TLabel
         Left = 16
         Top = 5
@@ -337,7 +332,6 @@ object F_Registrati: TF_Registrati
       Height = 57
       Align = alBottom
       TabOrder = 13
-      ExplicitTop = 456
       object Button1: TButton
         Left = 374
         Top = 1
@@ -346,9 +340,7 @@ object F_Registrati: TF_Registrati
         Align = alRight
         Caption = 'Invia'
         TabOrder = 0
-        ExplicitLeft = 352
-        ExplicitTop = 16
-        ExplicitHeight = 25
+        OnClick = Button1Click
       end
       object Button2: TButton
         Left = 299
@@ -359,9 +351,6 @@ object F_Registrati: TF_Registrati
         Caption = 'Cancella '
         TabOrder = 1
         OnClick = Button2Click
-        ExplicitLeft = 352
-        ExplicitTop = 16
-        ExplicitHeight = 25
       end
     end
   end
