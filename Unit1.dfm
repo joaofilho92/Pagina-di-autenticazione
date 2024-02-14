@@ -2,8 +2,8 @@ object F_Principale: TF_Principale
   Left = 0
   Top = 0
   Caption = 'Form Principale'
-  ClientHeight = 442
-  ClientWidth = 628
+  ClientHeight = 503
+  ClientWidth = 987
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +15,8 @@ object F_Principale: TF_Principale
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 129
-    Height = 442
+    Width = 153
+    Height = 503
     Align = alLeft
     TabOrder = 0
   end
